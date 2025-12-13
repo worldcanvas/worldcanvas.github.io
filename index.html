@@ -179,6 +179,108 @@
             margin-top: 2rem;
         }
 
+        /* Authors Section */
+        .authors-section {
+            margin-top: 1rem;
+            text-align: center;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .authors {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0rem 1.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .author-block {
+            font-size: 1rem;
+            color: #4C9BE7;
+            font-weight: 400;
+            white-space: nowrap;
+        }
+
+        .author-block sup {
+            font-size: 0.75em;
+            color: #000000;
+            font-weight: 600;
+        }
+
+        .author-block a {
+            color: #4C9BE7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+
+        .author-block a:hover {
+            color: #000000;
+            border-bottom: 2px solid #000000;
+        }
+
+        .author-affiliation {
+            margin-bottom: 1.5rem;
+            color: #000000;
+            font-size: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .affiliation-text {
+            font-weight: 400;
+            letter-spacing: 0.02em;
+        }
+
+        .affiliation-text sup {
+            color: #000000;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.3rem 1rem;
+            background: #FEF8DF;
+            color: #3C3026;
+            border: 3px solid #3C3026;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
+            position: relative;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .nav-button:hover {
+            background: #FEF8DF;
+            color: #3C3026;
+            transform: translate(-2px, -2px);
+            box-shadow: 7px 7px 0px rgba(0, 0, 0, 0.25);
+        }
+
+
         /* Buttons */
         .button {
             font-family: 'Space Mono', monospace;
@@ -769,38 +871,78 @@
                         <h2 class="title is-4 publication-title">Painting Promptable Events with Reference Images,
                             Trajectories, and Text</h2>
 
-                        <div class="is-size-5 publication-authors">
-                            <span class="author-block">Anonymous Authors</span>
-                        </div>
-
-                        <!-- <div class="column has-text-centered">
-                        <div class="publication-links">
-                            <span class="link-block">
-                                <a href="#" target="_blank" class="external-link button is-normal is-rounded is-dark">
-                                    <span class="icon">
-                                        <i class="ai ai-arxiv"></i>
+                            <div class="authors-section">
+                                <div class="authors">
+                                    <span class="author-block">
+                                        <a href="https://scholar.google.com/citations?user=0uO4fzkAAAAJ&hl=zh-CN">Hanlin
+                                            Wang</a><sup>1,2</sup>
                                     </span>
+                                    <span class="author-block">
+                                        <a href="https://ken-ouyang.github.io/">Hao Ouyang</a><sup>2</sup>
+                                    </span>
+                                    <span class="author-block">
+                                        <a href="https://github.com/qiuyu96">Qiuyu Wang</a><sup>2</sup>
+                                    </span>
+                                    <span class="author-block">
+                                        <a href="https://bruceyy.com/">Yue Yu</a><sup>1,2</sup>
+                                    </span>
+                                    <span class="author-block">
+                                        <a href="https://yihao-meng.github.io/">Yihao Meng</a><sup>1,2</sup>
+                                    </span>
+                                    <span class="author-block">
+                                        <a href="https://github.com/encounter1997">Wen Wang</a><sup>3,2</sup>
+                                    </span>
+                                    <span class="author-block">
+                                        <a href="https://felixcheng97.github.io/">Ka Leong Cheng</a><sup>2</sup>
+                                    </span>
+                                    <span class="author-block">
+                                        <a href="https://scholar.google.com/citations?user=dNhzCu4AAAAJ&hl=zh-CN">Shuailei Ma</a><sup>4,2</sup>
+                                    </span>
+                                    <span class="author-block">
+                                        <a href="https://bqy.info/">Qingyan Bai</a><sup>1,2</sup>
+                                    </span>
+                                    <span class="author-block">
+                                        <a href="https://yixuanli98.github.io/">Yixuan Li</a><sup>5,2</sup>
+                                    </span>
+                                    <span class="author-block">
+                                        <a href="https://scholar.google.com/citations?user=nNQU71kAAAAJ&hl=zh-CN">Cheng
+                                            Chen</a><sup>6,2</sup>
+                                    </span>
+                                    <span class="author-block">
+                                        <a href="https://zengyh1900.github.io/">Yanhong Zeng</a><sup>2</sup>
+                                    </span>
+                                    <span class="author-block">
+                                        <a href="https://openreview.net/profile?id=~Xing_Zhu2">Xing Zhu</a><sup>2</sup>
+                                    </span>
+                                    <span class="author-block">
+                                        <a href="https://shenyujun.github.io/">Yujun Shen</a><sup>2</sup>
+                                    </span>
+                                    <span class="author-block">
+                                        <a href="https://cqf.io/">Qifeng Chen</a><sup>1</sup>
+                                    </span>
+                                </div>
+                    
+                                <div class="author-affiliation">
+                                    <span class="affiliation-text"><sup>1</sup>HKUST, <sup>2</sup>Ant Group, <sup>3</sup>ZJU, <sup>4</sup>NEU,
+                                        <sup>5</sup>CUHK, <sup>6</sup>NTU</span>
+                                </div>
+                            </div>
+
+                            <div class="nav-links">
+                                <a class="nav-button" href="https://www.baidu.com" target="_blank" rel="noopener noreferrer">
+                                    <span>📄</span>
                                     <span>Paper</span>
                                 </a>
-                            </span>
-                            <span class="link-block">
-                                <a href="#" target="_blank" class="external-link button is-normal is-rounded is-dark">
-                                    <span class="icon">
-                                        <i class="fab fa-github"></i>
-                                    </span>
-                                    <span>Code</span>
+                                <a class="nav-button" href="#" target="_blank" rel="noopener noreferrer">
+                                    <span>💻</span>
+                                    <span>GitHub</span>
                                 </a>
-                            </span>
-                            <span class="link-block">
-                                <a href="#" target="_blank" class="external-link button is-normal is-rounded is-dark">
-                                    <span class="icon">
-                                        🤗
-                                    </span>
-                                    <span>HF Demo</span>
+                                <a class="nav-button" href="#" target="_blank" rel="noopener noreferrer">
+                                    <span>🤗</span>
+                                    <span>Model</span>
                                 </a>
-                            </span>
-                        </div>
-                    </div> -->
+                            </div>
+
                     </div>
                 </div>
             </div>
@@ -866,14 +1008,14 @@
                                             <div class="prompt-text">What event should happen next?</div>
                                         </div>
                                         <video class="reference-video" data-option="dog" muted loop>
-                                            <source src="cases_new/teaser/_dog/output_video_first.mp4" type="video/mp4">
+                                            <source src="cases_new/teaser/dog/output_video_first.mp4" type="video/mp4">
                                         </video>
                                         <video class="reference-video" data-option="dog-spin" muted loop>
-                                            <source src="cases_new/teaser/_dog_spin/output_video_first.mp4"
+                                            <source src="cases_new/teaser/dog_spin/output_video_first.mp4"
                                                 type="video/mp4">
                                         </video>
                                         <video class="reference-video" data-option="jerry-dog" muted loop>
-                                            <source src="cases_new/teaser/_jerry_dog/output_video_first.mp4"
+                                            <source src="cases_new/teaser/jerry_dog/output_video_first.mp4"
                                                 type="video/mp4">
                                         </video>
                                     </div>
@@ -885,13 +1027,13 @@
                                         </div>
 
                                         <video class="main-video" data-option="dog" muted loop>
-                                            <source src="cases_new/teaser/_dog/output_video.mp4" type="video/mp4">
+                                            <source src="cases_new/teaser/dog/output_video.mp4" type="video/mp4">
                                         </video>
                                         <video class="main-video" data-option="dog-spin" muted loop>
-                                            <source src="cases_new/teaser/_dog_spin/output_video.mp4" type="video/mp4">
+                                            <source src="cases_new/teaser/dog_spin/output_video.mp4" type="video/mp4">
                                         </video>
                                         <video class="main-video" data-option="jerry-dog" muted loop>
-                                            <source src="cases_new/teaser/_jerry_dog/output_video.mp4" type="video/mp4">
+                                            <source src="cases_new/teaser/jerry_dog/output_video.mp4" type="video/mp4">
                                         </video>
                                     </div>
                                 </div>
@@ -919,10 +1061,10 @@
                                             <div class="prompt-text">What event should happen next?</div>
                                         </div>
                                         <video class="reference-video" data-option="run" muted loop>
-                                            <source src="cases_new/teaser/_run/output_video_first.mp4" type="video/mp4">
+                                            <source src="cases_new/teaser/run/output_video_first.mp4" type="video/mp4">
                                         </video>
                                         <video class="reference-video" data-option="run-dragon" muted loop>
-                                            <source src="cases_new/teaser/_run_dragon4/output_video_first.mp4"
+                                            <source src="cases_new/teaser/run_dragon4/output_video_first.mp4"
                                                 type="video/mp4">
                                         </video>
                                     </div>
@@ -934,10 +1076,10 @@
                                         </div>
 
                                         <video class="main-video" data-option="run" muted loop>
-                                            <source src="cases_new/teaser/_run/output_video.mp4" type="video/mp4">
+                                            <source src="cases_new/teaser/run/output_video.mp4" type="video/mp4">
                                         </video>
                                         <video class="main-video" data-option="run-dragon" muted loop>
-                                            <source src="cases_new/teaser/_run_dragon4/output_video.mp4" type="video/mp4">
+                                            <source src="cases_new/teaser/run_dragon4/output_video.mp4" type="video/mp4">
                                         </video>
                                     </div>
                                 </div>
@@ -970,7 +1112,7 @@
                                     <div class="video-wrapper">
                                         <div class="video-player-container">
                                             <video class="reference-video" autoplay muted loop>
-                                                <source src="cases_new/object_movements/_piaoyi/output_video_first.mp4"
+                                                <source src="cases_new/object_movements/piaoyi/output_video_first.mp4"
                                                     type="video/mp4">
                                             </video>
                                         </div>
@@ -978,7 +1120,7 @@
                                     <div class="video-wrapper">
                                         <div class="video-player-container">
                                             <video class="main-video" autoplay muted loop>
-                                                <source src="cases_new/object_movements/_piaoyi/output_video.mp4"
+                                                <source src="cases_new/object_movements/piaoyi/output_video.mp4"
                                                     type="video/mp4">
                                             </video>
                                         </div>
@@ -996,7 +1138,7 @@
                                     <div class="video-wrapper">
                                         <div class="video-player-container">
                                             <video class="reference-video" autoplay muted loop>
-                                                <source src="cases_new/object_movements/_camera/output_video_first.mp4"
+                                                <source src="cases_new/object_movements/camera/output_video_first.mp4"
                                                     type="video/mp4">
                                             </video>
                                         </div>
@@ -1004,7 +1146,7 @@
                                     <div class="video-wrapper">
                                         <div class="video-player-container">
                                             <video class="main-video" autoplay muted loop>
-                                                <source src="cases_new/object_movements/_camera/output_video.mp4" type="video/mp4">
+                                                <source src="cases_new/object_movements/camera/output_video.mp4" type="video/mp4">
                                             </video>
                                         </div>
                                     </div>
@@ -1072,7 +1214,7 @@
                                     <div class="video-wrapper">
                                         <div class="video-player-container">
                                             <video class="reference-video" autoplay muted loop>
-                                                <source src="cases_new/Interactions/_dance/output_video_first.mp4"
+                                                <source src="cases_new/interactions/dance/output_video_first.mp4"
                                                     type="video/mp4">
                                             </video>
                                         </div>
@@ -1080,7 +1222,7 @@
                                     <div class="video-wrapper">
                                         <div class="video-player-container">
                                             <video class="main-video" autoplay muted loop>
-                                                <source src="cases_new/Interactions/_dance/output_video.mp4"
+                                                <source src="cases_new/interactions/dance/output_video.mp4"
                                                     type="video/mp4">
                                             </video>
                                         </div>
@@ -1098,7 +1240,7 @@
                                     <div class="video-wrapper">
                                         <div class="video-player-container">
                                             <video class="reference-video" autoplay muted loop>
-                                                <source src="cases_new/Interactions/_girl_spin_lift_dog/output_video_first.mp4"
+                                                <source src="cases_new/interactions/girl_spin_lift_dog/output_video_first.mp4"
                                                     type="video/mp4">
                                             </video>
                                         </div>
@@ -1106,7 +1248,7 @@
                                     <div class="video-wrapper">
                                         <div class="video-player-container">
                                             <video class="main-video" autoplay muted loop>
-                                                <source src="cases_new/Interactions/_girl_spin_lift_dog/output_video.mp4" type="video/mp4">
+                                                <source src="cases_new/interactions/girl_spin_lift_dog/output_video.mp4" type="video/mp4">
                                             </video>
                                         </div>
                                     </div>
@@ -1123,14 +1265,14 @@
                                     <div class="video-wrapper">
                                         <div class="video-player-container">
                                             <video class="reference-video" autoplay muted loop>
-                                                <source src="cases_new/Interactions/_table/output_video_first.mp4" type="video/mp4">
+                                                <source src="cases_new/interactions/table/output_video_first.mp4" type="video/mp4">
                                             </video>
                                         </div>
                                     </div>
                                     <div class="video-wrapper">
                                         <div class="video-player-container">
                                             <video class="main-video" autoplay muted loop>
-                                                <source src="cases_new/Interactions/_table/output_video.mp4" type="video/mp4">
+                                                <source src="cases_new/interactions/table/output_video.mp4" type="video/mp4">
                                             </video>
                                         </div>
                                     </div>
@@ -1147,14 +1289,14 @@
                                     <div class="video-wrapper">
                                         <div class="video-player-container">
                                             <video class="reference-video" autoplay muted loop>
-                                                <source src="cases_new/Interactions/_war/output_video_first.mp4" type="video/mp4">
+                                                <source src="cases_new/interactions/war/output_video_first.mp4" type="video/mp4">
                                             </video>
                                         </div>
                                     </div>
                                     <div class="video-wrapper">
                                         <div class="video-player-container">
                                             <video class="main-video" autoplay muted loop>
-                                                <source src="cases_new/Interactions/_war/output_video.mp4" type="video/mp4">
+                                                <source src="cases_new/interactions/war/output_video.mp4" type="video/mp4">
                                             </video>
                                         </div>
                                     </div>
@@ -1174,7 +1316,7 @@
                                     <div class="video-wrapper">
                                         <div class="video-player-container">
                                             <video class="reference-video" autoplay muted loop>
-                                                <source src="cases_new/Object_appearance/ufo/output_video_first.mp4"
+                                                <source src="cases_new/object_appearance/ufo/output_video_first.mp4"
                                                     type="video/mp4">
                                             </video>
                                         </div>
@@ -1182,7 +1324,7 @@
                                     <div class="video-wrapper">
                                         <div class="video-player-container">
                                             <video class="main-video" autoplay muted loop>
-                                                <source src="cases_new/Object_appearance/ufo/output_video.mp4"
+                                                <source src="cases_new/object_appearance/ufo/output_video.mp4"
                                                     type="video/mp4">
                                             </video>
                                         </div>
@@ -1200,7 +1342,7 @@
                                     <div class="video-wrapper">
                                         <div class="video-player-container">
                                             <video class="reference-video" autoplay muted loop>
-                                                <source src="cases_new/Object_appearance/_sudu_ours/output_video_first.mp4"
+                                                <source src="cases_new/object_appearance/sudu_ours/output_video_first.mp4"
                                                     type="video/mp4">
                                             </video>
                                         </div>
@@ -1208,7 +1350,7 @@
                                     <div class="video-wrapper">
                                         <div class="video-player-container">
                                             <video class="main-video" autoplay muted loop>
-                                                <source src="cases_new/Object_appearance/_sudu_ours/output_video.mp4" type="video/mp4">
+                                                <source src="cases_new/object_appearance/sudu_ours/output_video.mp4" type="video/mp4">
                                             </video>
                                         </div>
                                     </div>
@@ -1225,14 +1367,14 @@
                                     <div class="video-wrapper">
                                         <div class="video-player-container">
                                             <video class="reference-video" autoplay muted loop>
-                                                <source src="cases_new/Object_appearance/thief/output_video_first.mp4" type="video/mp4">
+                                                <source src="cases_new/object_appearance/thief/output_video_first.mp4" type="video/mp4">
                                             </video>
                                         </div>
                                     </div>
                                     <div class="video-wrapper">
                                         <div class="video-player-container">
                                             <video class="main-video" autoplay muted loop>
-                                                <source src="cases_new/Object_appearance/thief/output_video.mp4" type="video/mp4">
+                                                <source src="cases_new/object_appearance/thief/output_video.mp4" type="video/mp4">
                                             </video>
                                         </div>
                                     </div>
@@ -1249,14 +1391,14 @@
                                     <div class="video-wrapper">
                                         <div class="video-player-container">
                                             <video class="reference-video" autoplay muted loop>
-                                                <source src="cases_new/Object_appearance/ghost/output_video_first.mp4" type="video/mp4">
+                                                <source src="cases_new/object_appearance/ghost/output_video_first.mp4" type="video/mp4">
                                             </video>
                                         </div>
                                     </div>
                                     <div class="video-wrapper">
                                         <div class="video-player-container">
                                             <video class="main-video" autoplay muted loop>
-                                                <source src="cases_new/Object_appearance/ghost/output_video.mp4" type="video/mp4">
+                                                <source src="cases_new/object_appearance/ghost/output_video.mp4" type="video/mp4">
                                             </video>
                                         </div>
                                     </div>
@@ -1435,14 +1577,14 @@
                                 <div class="video-wrapper">
                                     <div class="video-player-container">
                                         <video class="reference-video" autoplay muted loop>
-                                            <source src="cases_new/corr/_caochang1/output_video_first_caochang1.mp4" type="video/mp4">
+                                            <source src="cases_new/corr/caochang1/output_video_first_caochang1.mp4" type="video/mp4">
                                         </video>
                                     </div>
                                 </div>
                                 <div class="video-wrapper">
                                     <div class="video-player-container">
                                         <video class="main-video" autoplay muted loop>
-                                            <source src="cases_new/corr/_caochang1/output_video.mp4" type="video/mp4">
+                                            <source src="cases_new/corr/caochang1/output_video.mp4" type="video/mp4">
                                         </video>
                                     </div>
                                 </div>
@@ -1459,7 +1601,7 @@
                                 <div class="video-wrapper">
                                     <div class="video-player-container">
                                         <video class="reference-video" autoplay muted loop>
-                                            <source src="cases_new/corr/_caochang2/output_video_first_caochang2.mp4"
+                                            <source src="cases_new/corr/caochang2/output_video_first_caochang2.mp4"
                                                 type="video/mp4">
                                         </video>
                                     </div>
@@ -1467,7 +1609,7 @@
                                 <div class="video-wrapper">
                                     <div class="video-player-container">
                                         <video class="main-video" autoplay muted loop>
-                                            <source src="cases_new/corr/_caochang2/output_video.mp4" type="video/mp4">
+                                            <source src="cases_new/corr/caochang2/output_video.mp4" type="video/mp4">
                                         </video>
                                     </div>
                                 </div>
@@ -1485,14 +1627,14 @@
                                 <div class="video-wrapper">
                                     <div class="video-player-container">
                                         <video class="reference-video" autoplay muted loop>
-                                            <source src="cases_new/corr/_beach1/output_video_first.mp4" type="video/mp4">
+                                            <source src="cases_new/corr/beach1/output_video_first.mp4" type="video/mp4">
                                         </video>
                                     </div>
                                 </div>
                                 <div class="video-wrapper">
                                     <div class="video-player-container">
                                         <video class="main-video" autoplay muted loop>
-                                            <source src="cases_new/corr/_beach1/output_video.mp4" type="video/mp4">
+                                            <source src="cases_new/corr/beach1/output_video.mp4" type="video/mp4">
                                         </video>
                                     </div>
                                 </div>
@@ -1510,14 +1652,14 @@
                                 <div class="video-wrapper">
                                     <div class="video-player-container">
                                         <video class="reference-video" autoplay muted loop>
-                                            <source src="cases_new/corr/_beach2/output_video_first.mp4" type="video/mp4">
+                                            <source src="cases_new/corr/beach2/output_video_first.mp4" type="video/mp4">
                                         </video>
                                     </div>
                                 </div>
                                 <div class="video-wrapper">
                                     <div class="video-player-container">
                                         <video class="main-video" autoplay muted loop>
-                                            <source src="cases_new/corr/_beach2/output_video.mp4" type="video/mp4">
+                                            <source src="cases_new/corr/beach2/output_video.mp4" type="video/mp4">
                                         </video>
                                     </div>
                                 </div>
@@ -1535,14 +1677,14 @@
                                 <div class="video-wrapper">
                                     <div class="video-player-container">
                                         <video class="reference-video" autoplay muted loop>
-                                            <source src="cases_new/corr/_children1/output_video_first.mp4" type="video/mp4">
+                                            <source src="cases_new/corr/children1/output_video_first.mp4" type="video/mp4">
                                         </video>
                                     </div>
                                 </div>
                                 <div class="video-wrapper">
                                     <div class="video-player-container">
                                         <video class="main-video" autoplay muted loop>
-                                            <source src="cases_new/corr/_children1/output_video.mp4" type="video/mp4">
+                                            <source src="cases_new/corr/children1/output_video.mp4" type="video/mp4">
                                         </video>
                                     </div>
                                 </div>
@@ -1560,14 +1702,14 @@
                                 <div class="video-wrapper">
                                     <div class="video-player-container">
                                         <video class="reference-video" autoplay muted loop>
-                                            <source src="cases_new/corr/_children2/output_video_first.mp4" type="video/mp4">
+                                            <source src="cases_new/corr/children2/output_video_first.mp4" type="video/mp4">
                                         </video>
                                     </div>
                                 </div>
                                 <div class="video-wrapper">
                                     <div class="video-player-container">
                                         <video class="main-video" autoplay muted loop>
-                                            <source src="cases_new/corr/_children2/output_video.mp4" type="video/mp4">
+                                            <source src="cases_new/corr/children2/output_video.mp4" type="video/mp4">
                                         </video>
                                     </div>
                                 </div>
@@ -1585,14 +1727,14 @@
                                 <div class="video-wrapper">
                                     <div class="video-player-container">
                                         <video class="reference-video" autoplay muted loop>
-                                            <source src="cases_new/corr/_sky1/output_video_first.mp4" type="video/mp4">
+                                            <source src="cases_new/corr/sky1/output_video_first.mp4" type="video/mp4">
                                         </video>
                                     </div>
                                 </div>
                                 <div class="video-wrapper">
                                     <div class="video-player-container">
                                         <video class="main-video" autoplay muted loop>
-                                            <source src="cases_new/corr/_sky1/output_video.mp4" type="video/mp4">
+                                            <source src="cases_new/corr/sky1/output_video.mp4" type="video/mp4">
                                         </video>
                                     </div>
                                 </div>
@@ -1610,14 +1752,14 @@
                                 <div class="video-wrapper">
                                     <div class="video-player-container">
                                         <video class="reference-video" autoplay muted loop>
-                                            <source src="cases_new/corr/_sky2/output_video_first.mp4" type="video/mp4">
+                                            <source src="cases_new/corr/sky2/output_video_first.mp4" type="video/mp4">
                                         </video>
                                     </div>
                                 </div>
                                 <div class="video-wrapper">
                                     <div class="video-player-container">
                                         <video class="main-video" autoplay muted loop>
-                                            <source src="cases_new/corr/_sky2/output_video.mp4" type="video/mp4">
+                                            <source src="cases_new/corr/sky2/output_video.mp4" type="video/mp4">
                                         </video>
                                     </div>
                                 </div>
@@ -1639,14 +1781,14 @@
                                 <div class="video-wrapper">
                                     <div class="video-player-container">
                                         <video class="reference-video" autoplay muted loop>
-                                            <source src="cases_new/memory/_ball/output_video_first.mp4" type="video/mp4">
+                                            <source src="cases_new/memory/ball/output_video_first.mp4" type="video/mp4">
                                         </video>
                                     </div>
                                 </div>
                                 <div class="video-wrapper">
                                     <div class="video-player-container">
                                         <video class="main-video" autoplay muted loop>
-                                            <source src="cases_new/memory/_ball/output_video.mp4" type="video/mp4">
+                                            <source src="cases_new/memory/ball/output_video.mp4" type="video/mp4">
                                         </video>
                                     </div>
                                 </div>
@@ -1663,7 +1805,7 @@
                                 <div class="video-wrapper">
                                     <div class="video-player-container">
                                         <video class="reference-video" autoplay muted loop>
-                                            <source src="cases_new/memory/_camera_scene/output_video_first.mp4"
+                                            <source src="cases_new/memory/camera_scene/output_video_first.mp4"
                                                 type="video/mp4">
                                         </video>
                                     </div>
@@ -1671,7 +1813,7 @@
                                 <div class="video-wrapper">
                                     <div class="video-player-container">
                                         <video class="main-video" autoplay muted loop>
-                                            <source src="cases_new/memory/_camera_scene/output_video.mp4" type="video/mp4">
+                                            <source src="cases_new/memory/camera_scene/output_video.mp4" type="video/mp4">
                                         </video>
                                     </div>
                                 </div>
@@ -1688,14 +1830,14 @@
                                 <div class="video-wrapper">
                                     <div class="video-player-container">
                                         <video class="reference-video" autoplay muted loop>
-                                            <source src="cases_new/memory/_shubao/output_video_first.mp4" type="video/mp4">
+                                            <source src="cases_new/memory/shubao/output_video_first.mp4" type="video/mp4">
                                         </video>
                                     </div>
                                 </div>
                                 <div class="video-wrapper">
                                     <div class="video-player-container">
                                         <video class="main-video" autoplay muted loop>
-                                            <source src="cases_new/memory/_shubao/output_video.mp4" type="video/mp4">
+                                            <source src="cases_new/memory/shubao/output_video.mp4" type="video/mp4">
                                         </video>
                                     </div>
                                 </div>
@@ -1925,7 +2067,7 @@
                     <div class="column is-one-third gallery-item">
                         <div class="video-container-overlay">
                             <video class="main-video" autoplay muted loop>
-                                <source src="cases_new/Compare/door_new_ATI.mp4" type="video/mp4">
+                                <source src="cases_new/compare/door_new_ATI.mp4" type="video/mp4">
                             </video>
                         </div>
                         <div class="video-caption">
@@ -1937,7 +2079,7 @@
                     <div class="column is-one-third gallery-item">
                         <div class="video-container-overlay">
                             <video class="main-video" autoplay muted loop>
-                                <source src="cases_new/Compare/door_new_Wan.mp4" type="video/mp4">
+                                <source src="cases_new/compare/door_new_wan.mp4" type="video/mp4">
                             </video>
 
                         </div>
@@ -1950,7 +2092,7 @@
                     <div class="column is-one-third gallery-item">
                         <div class="video-container-overlay">
                             <video class="reference-video" autoplay muted loop>
-                                <source src="cases_new/Compare/_door_new_ours/output_video.mp4" type="video/mp4">
+                                <source src="cases_new/compare/door_new_ours/output_video.mp4" type="video/mp4">
                             </video>
 
                         </div>
@@ -1964,7 +2106,7 @@
                     <div class="column is-one-third gallery-item">
                         <div class="video-container-overlay">
                             <video class="main-video" autoplay muted loop>
-                                <source src="cases_new/Compare/sudu_ATI.mp4" type="video/mp4">
+                                <source src="cases_new/compare/sudu_ati.mp4" type="video/mp4">
                             </video>
                         </div>
                         <div class="video-caption">
@@ -1976,7 +2118,7 @@
                     <div class="column is-one-third gallery-item">
                         <div class="video-container-overlay">
                             <video class="main-video" autoplay muted loop>
-                                <source src="cases_new/Compare/sudu_Wan.mp4" type="video/mp4">
+                                <source src="cases_new/compare/sudu_wan.mp4" type="video/mp4">
                             </video>
                         </div>
                         <div class="video-caption">
@@ -1988,7 +2130,7 @@
                     <div class="column is-one-third gallery-item">
                         <div class="video-container-overlay">
                             <video class="reference-video" autoplay muted loop>
-                                <source src="cases_new/Compare/_sudu_ours/output_video.mp4" type="video/mp4">
+                                <source src="cases_new/compare/sudu_ours/output_video.mp4" type="video/mp4">
                             </video>
                         </div>
                         <div class="video-caption">
@@ -2001,7 +2143,7 @@
                     <div class="column is-one-third gallery-item">
                         <div class="video-container-overlay">
                             <video class="main-video" autoplay muted loop>
-                                <source src="cases_new/corr/children2_ATI.mp4" type="video/mp4">
+                                <source src="cases_new/corr/children2_ati.mp4" type="video/mp4">
                             </video>
                         </div>
                         <div class="video-caption">
@@ -2013,7 +2155,7 @@
                     <div class="column is-one-third gallery-item">
                         <div class="video-container-overlay">
                             <video class="main-video" autoplay muted loop>
-                                <source src="cases_new/corr/children2_Wan.mp4" type="video/mp4">
+                                <source src="cases_new/corr/children2_wan.mp4" type="video/mp4">
                             </video>
                         </div>
                         <div class="video-caption">
@@ -2025,7 +2167,7 @@
                     <div class="column is-one-third gallery-item">
                         <div class="video-container-overlay">
                             <video class="reference-video" autoplay muted loop>
-                                <source src="cases_new/corr/_children2/output_video.mp4" type="video/mp4">
+                                <source src="cases_new/corr/children2/output_video.mp4" type="video/mp4">
                             </video>
                         </div>
                         <div class="video-caption">
@@ -2038,7 +2180,7 @@
                     <div class="column is-one-third gallery-item">
                         <div class="video-container-overlay">
                             <video class="main-video" autoplay muted loop>
-                                <source src="cases_new/corr/caochang2_ATI.mp4" type="video/mp4">
+                                <source src="cases_new/corr/caochang2_ati.mp4" type="video/mp4">
                             </video>
                         </div>
                         <div class="video-caption">
@@ -2050,7 +2192,7 @@
                     <div class="column is-one-third gallery-item">
                         <div class="video-container-overlay">
                             <video class="main-video" autoplay muted loop>
-                                <source src="cases_new/corr/caochang2_Wan.mp4" type="video/mp4">
+                                <source src="cases_new/corr/caochang2_wan.mp4" type="video/mp4">
                             </video>
                         </div>
                         <div class="video-caption">
@@ -2062,7 +2204,7 @@
                     <div class="column is-one-third gallery-item">
                         <div class="video-container-overlay">
                             <video class="reference-video" autoplay muted loop>
-                                <source src="cases_new/corr/caochang2_INOUT.mp4" type="video/mp4">
+                                <source src="cases_new/corr/caochang2_inout.mp4" type="video/mp4">
                             </video>
                         </div>
                         <div class="video-caption">
@@ -2074,7 +2216,7 @@
                     <div class="column is-one-third gallery-item">
                         <div class="video-container-overlay">
                             <video class="reference-video" autoplay muted loop>
-                                <source src="cases_new/corr/_caochang2/output_video.mp4" type="video/mp4">
+                                <source src="cases_new/corr/caochang2/output_video.mp4" type="video/mp4">
                             </video>
                         </div>
                         <div class="video-caption">
@@ -2087,7 +2229,7 @@
                     <div class="column is-one-third gallery-item">
                         <div class="video-container-overlay">
                             <video class="main-video" autoplay muted loop>
-                                <source src="cases_new/Compare/blank1_INOUT.mp4" type="video/mp4">
+                                <source src="cases_new/compare/blank1_inout.mp4" type="video/mp4">
                             </video>
                         </div>
                         <div class="video-caption">
@@ -2100,7 +2242,7 @@
                     <div class="column is-one-third gallery-item">
                         <div class="video-container-overlay">
                             <video class="reference-video" autoplay muted loop>
-                                <source src="cases_new/Compare/_blank1_ours/output_video.mp4" type="video/mp4">
+                                <source src="cases_new/compare/blank1_ours/output_video.mp4" type="video/mp4">
                             </video>
                         </div>
                         <div class="video-caption">
@@ -2137,7 +2279,7 @@
                     <div class="column is-one-third gallery-item">
                         <div class="video-container-overlay">
                             <video class="reference-video" autoplay muted loop>
-                                <source src="cases_new/corr/_beach2/output_video.mp4" type="video/mp4">
+                                <source src="cases_new/corr/beach2/output_video.mp4" type="video/mp4">
                             </video>
                         </div>
                         <div class="video-caption">

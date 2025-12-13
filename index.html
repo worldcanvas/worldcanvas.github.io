@@ -179,108 +179,6 @@
             margin-top: 2rem;
         }
 
-        /* Authors Section */
-        .authors-section {
-            margin-top: 1rem;
-            text-align: center;
-            max-width: 1000px;
-            margin-left: auto;
-            margin-right: auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .authors {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0rem 1.5rem;
-            margin-bottom: 1rem;
-            line-height: 1.8;
-        }
-
-        .author-block {
-            font-size: 1rem;
-            color: #4C9BE7;
-            font-weight: 400;
-            white-space: nowrap;
-        }
-
-        .author-block sup {
-            font-size: 0.75em;
-            color: #000000;
-            font-weight: 600;
-        }
-
-        .author-block a {
-            color: #4C9BE7;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            border-bottom: 2px solid transparent;
-        }
-
-        .author-block a:hover {
-            color: #000000;
-            border-bottom: 2px solid #000000;
-        }
-
-        .author-affiliation {
-            margin-bottom: 1.5rem;
-            color: #000000;
-            font-size: 1rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .affiliation-text {
-            font-weight: 400;
-            letter-spacing: 0.02em;
-        }
-
-        .affiliation-text sup {
-            color: #000000;
-            font-weight: 600;
-        }
-
-        .nav-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 1rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .nav-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.3rem 1rem;
-            background: #FEF8DF;
-            color: #3C3026;
-            border: 3px solid #3C3026;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-            box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
-            position: relative;
-            font-family: 'Lato', sans-serif;
-        }
-
-        .nav-button:hover {
-            background: #FEF8DF;
-            color: #3C3026;
-            transform: translate(-2px, -2px);
-            box-shadow: 7px 7px 0px rgba(0, 0, 0, 0.25);
-        }
-
-
         /* Buttons */
         .button {
             font-family: 'Space Mono', monospace;
@@ -871,78 +769,38 @@
                         <h2 class="title is-4 publication-title">Painting Promptable Events with Reference Images,
                             Trajectories, and Text</h2>
 
-                            <div class="authors-section">
-                                <div class="authors">
-                                    <span class="author-block">
-                                        <a href="https://scholar.google.com/citations?user=0uO4fzkAAAAJ&hl=zh-CN">Hanlin
-                                            Wang</a><sup>1,2</sup>
-                                    </span>
-                                    <span class="author-block">
-                                        <a href="https://ken-ouyang.github.io/">Hao Ouyang</a><sup>2</sup>
-                                    </span>
-                                    <span class="author-block">
-                                        <a href="https://github.com/qiuyu96">Qiuyu Wang</a><sup>2</sup>
-                                    </span>
-                                    <span class="author-block">
-                                        <a href="https://bruceyy.com/">Yue Yu</a><sup>1,2</sup>
-                                    </span>
-                                    <span class="author-block">
-                                        <a href="https://yihao-meng.github.io/">Yihao Meng</a><sup>1,2</sup>
-                                    </span>
-                                    <span class="author-block">
-                                        <a href="https://github.com/encounter1997">Wen Wang</a><sup>3,2</sup>
-                                    </span>
-                                    <span class="author-block">
-                                        <a href="https://felixcheng97.github.io/">Ka Leong Cheng</a><sup>2</sup>
-                                    </span>
-                                    <span class="author-block">
-                                        <a href="https://scholar.google.com/citations?user=dNhzCu4AAAAJ&hl=zh-CN">Shuailei Ma</a><sup>4,2</sup>
-                                    </span>
-                                    <span class="author-block">
-                                        <a href="https://bqy.info/">Qingyan Bai</a><sup>1,2</sup>
-                                    </span>
-                                    <span class="author-block">
-                                        <a href="https://yixuanli98.github.io/">Yixuan Li</a><sup>5,2</sup>
-                                    </span>
-                                    <span class="author-block">
-                                        <a href="https://scholar.google.com/citations?user=nNQU71kAAAAJ&hl=zh-CN">Cheng
-                                            Chen</a><sup>6,2</sup>
-                                    </span>
-                                    <span class="author-block">
-                                        <a href="https://zengyh1900.github.io/">Yanhong Zeng</a><sup>2</sup>
-                                    </span>
-                                    <span class="author-block">
-                                        <a href="https://openreview.net/profile?id=~Xing_Zhu2">Xing Zhu</a><sup>2</sup>
-                                    </span>
-                                    <span class="author-block">
-                                        <a href="https://shenyujun.github.io/">Yujun Shen</a><sup>2</sup>
-                                    </span>
-                                    <span class="author-block">
-                                        <a href="https://cqf.io/">Qifeng Chen</a><sup>1</sup>
-                                    </span>
-                                </div>
-                    
-                                <div class="author-affiliation">
-                                    <span class="affiliation-text"><sup>1</sup>HKUST, <sup>2</sup>Ant Group, <sup>3</sup>ZJU, <sup>4</sup>NEU,
-                                        <sup>5</sup>CUHK, <sup>6</sup>NTU</span>
-                                </div>
-                            </div>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">Anonymous Authors</span>
+                        </div>
 
-                            <div class="nav-links">
-                                <a class="nav-button" href="https://www.baidu.com" target="_blank" rel="noopener noreferrer">
-                                    <span>📄</span>
+                        <!-- <div class="column has-text-centered">
+                        <div class="publication-links">
+                            <span class="link-block">
+                                <a href="#" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="ai ai-arxiv"></i>
+                                    </span>
                                     <span>Paper</span>
                                 </a>
-                                <a class="nav-button" href="#" target="_blank" rel="noopener noreferrer">
-                                    <span>💻</span>
-                                    <span>GitHub</span>
+                            </span>
+                            <span class="link-block">
+                                <a href="#" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="fab fa-github"></i>
+                                    </span>
+                                    <span>Code</span>
                                 </a>
-                                <a class="nav-button" href="#" target="_blank" rel="noopener noreferrer">
-                                    <span>🤗</span>
-                                    <span>Model</span>
+                            </span>
+                            <span class="link-block">
+                                <a href="#" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        🤗
+                                    </span>
+                                    <span>HF Demo</span>
                                 </a>
-                            </div>
-
+                            </span>
+                        </div>
+                    </div> -->
                     </div>
                 </div>
             </div>

@@ -1,0 +1,2244 @@
+<!DOCTYPE html>
+<html class="fontawesome-i2svg-active fontawesome-i2svg-complete">
+
+<head>
+    <meta charset="utf-8">
+    <!-- Meta tags for social media banners -->
+    <meta name="description" content="The World is Your Canvas">
+    <meta property="og:title" content="The World is Your Canvas">
+    <meta property="og:description" content="Painting Promptable Events with Reference Images, Trajectories, and Text">
+    <meta property="og:url" content="URL OF THE WEBSITE">
+    <!-- Path to banner image, optimal dimensions are 1200X630-->
+    <meta property="og:image" content="static/image/banner.png">
+    <meta property="og:image:width" content="2412">
+    <meta property="og:image:height" content="1394">
+
+    <meta name="twitter:title" content="The World is Your Canvas">
+    <meta name="twitter:description" content="Painting Promptable Events with Reference Images, Trajectories, and Text">
+    <meta name="twitter:image" content="static/images/banner.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="keywords" content="Image-to-Video, Video Generation, AI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .blue-text {
+            color: rgb(11, 106, 255);
+        }
+        .green-text {
+            color: rgba(26, 158, 14, 0.616);
+        }
+        .purple-text {
+            color: rgb(76, 23, 236);
+        }
+        .red-text {
+            color: rgb(253, 26, 221);
+        }
+        .cyan-text {
+            color: rgb(23, 255, 215);
+        }
+    </style>
+
+    <title>The World is Your Canvas</title>
+
+    <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #f5f5f0;
+            color: #2d2d2d;
+        }
+
+        /* Pixel art decorative elements */
+        /* body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: repeating-linear-gradient(90deg,
+                    #ff69b4 0px,
+                    #ff69b4 20px,
+                    #f5f5f0 20px,
+                    #f5f5f0 40px);
+            z-index: 1000;
+        } */
+
+        /* Navigation */
+        .navbar {
+            background-color: #ffffff;
+            padding: 1.5rem 2rem;
+            border-bottom: 4px solid #2d2d2d;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar-brand {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.2rem;
+            color: #2d2d2d;
+        }
+
+        .navbar a {
+            color: #2d2d2d;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: #ff69b4;
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 2rem;
+            background-color: #ffffff;
+            /* border-bottom: 4px solid #2d2d2d; */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .is-max-desktop {
+            max-width: 960px;
+        }
+
+        .columns {
+            display: flex;
+            flex-wrap: wrap;
+            margin: -0.75rem;
+        }
+
+        .column {
+            padding: 0.75rem;
+            flex: 1;
+        }
+
+        .is-centered {
+            justify-content: center;
+        }
+
+        .has-text-centered {
+            text-align: center;
+        }
+
+        .has-text-justified {
+            text-align: justify;
+        }
+
+        /* Typography */
+        .title.is-1 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 2rem;
+            line-height: 1.4;
+            color: #2d2d2d;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .title.is-2 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.8rem;
+            color: #2d2d2d;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .title.is-3 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.2rem;
+            color: #2d2d2d;
+            margin-bottom: 1rem;
+        }
+
+        .title.is-4 {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2d2d2d;
+            margin-bottom: 0.75rem;
+        }
+
+        .publication-authors {
+            font-size: 1.1rem;
+            color: #666;
+            margin-top: 2rem;
+        }
+
+        /* Buttons */
+        .button {
+            font-family: 'Space Mono', monospace;
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            margin: 0.5rem;
+            background-color: #ff69b4;
+            color: white;
+            border: 3px solid #2d2d2d;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.2s;
+            box-shadow: 4px 4px 0 #2d2d2d;
+        }
+
+        .button:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 #2d2d2d;
+            background-color: #ff1493;
+        }
+
+        .button .icon {
+            margin-right: 0.5rem;
+        }
+
+        .publication-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .link-block {
+            display: inline-block;
+        }
+
+        /* Sections */
+        .section {
+            padding: 4rem 2rem;
+            background-color: #f5f5f0;
+        }
+
+        .hero.is-light {
+            background-color: #fff8dc;
+            border-top: 4px solid #2d2d2d;
+            border-bottom: 4px solid #2d2d2d;
+        }
+
+        .hero.is-small {
+            padding: 3rem 2rem;
+        }
+
+        /* Video Containers */
+        .video-container-overlay {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            border: 4px solid #2d2d2d;
+            background: white;
+            overflow: hidden;
+            box-shadow: 4px 4px 0 rgba(45, 45, 45, 0.3);
+        }
+
+        .video-pair {
+            display: flex;
+            width: 100%;
+        }
+
+        .video-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: white;
+        }
+
+        .video-wrapper:first-child {
+            border-right: 2px solid #2d2d2d;
+        }
+
+        .video-wrapper:last-child {
+            border-left: 2px solid #2d2d2d;
+        }
+
+        .video-player-container {
+            width: 100%;
+            background: #000;
+            position: relative;
+        }
+
+        .main-video,
+        .reference-video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .video-caption {
+            padding: 1rem 1.25rem;
+            background: #e8e3d7;
+            border-top: 3px solid #2d2d2d;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #2a2a2a;
+            min-height: 60px;
+            position: relative;
+            width: 100%;
+        }
+
+        .video-caption.simple {
+            min-height: auto;
+            padding: 0.75rem 1rem;
+        }
+
+        .caption-toggle {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 28px;
+            height: 28px;
+            background: #2d2d2d;
+            color: #90ee90;
+            border: 2px solid #2d2d2d;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.2s ease;
+            font-family: 'Press Start 2P', cursive;
+            box-shadow: 2px 2px 0 rgba(45, 45, 45, 0.3);
+        }
+
+        .caption-toggle:hover {
+            background: #ff69b4;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .caption-content {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            padding-right: 40px;
+        }
+
+        .caption-content.expanded {
+            display: block;
+            -webkit-line-clamp: unset;
+            line-clamp: unset;
+        }
+
+        .reference-image-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .reference-image-list {
+            width: 30%;
+            height: 100%;
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            align-items: center;
+        }
+
+        .reference-image-list .reference-image {
+            height: 100%;
+            width: 100%;
+        }
+
+        .reference-image-list .reference-image img {
+            border: 3px solid #ff69b4;
+            /* border-radius: 10px; */
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            box-shadow: 2px 2px 0 rgba(255, 105, 180, 0.3);
+        }
+
+        /* Gallery */
+        .gallery-item {
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .category-title {
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            padding: 1rem;
+            background-color: #90ee90;
+            border: 3px solid #2d2d2d;
+            display: inline-block;
+            width: auto;
+            min-width: 300px;
+        }
+
+        .is-multiline {
+            flex-wrap: wrap;
+        }
+
+        .is-one-third {
+            flex: 0 0 33.333%;
+            max-width: 33.333%;
+        }
+
+        .is-half {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+
+        .is-four-fifths {
+            flex: 0 0 80%;
+            max-width: 80%;
+        }
+
+        /* Abstract Section */
+        .content p {
+            font-size: 1rem;
+            /* font-family: Arial, Helvetica, sans-serif; */
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #ffffff;
+            padding: 3rem 2rem;
+            border-top: 4px solid #2d2d2d;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: #ff69b4;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 768px) {
+            .title.is-1 {
+                font-size: 1.5rem;
+            }
+
+            .title.is-2 {
+                font-size: 1.3rem;
+            }
+
+            .title.is-3 {
+                font-size: 1.1rem;
+            }
+
+            .is-one-third,
+            .is-half {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+
+            .button {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .video-pair {
+                flex-direction: column;
+            }
+
+            .video-wrapper:first-child {
+                border-right: none;
+                border-bottom: 2px solid #2d2d2d;
+            }
+
+            .video-wrapper:last-child {
+                border-left: none;
+                border-top: 2px solid #2d2d2d;
+            }
+        }
+
+        /* Decorative pixel elements */
+        /* .hero-body::before {
+            content: '★';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 3rem;
+            color: #90ee90;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        } */
+
+        /* Icon styles */
+        .icon {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            vertical-align: middle;
+        }
+
+        /* Interactive Video Container */
+        .interactive-video-container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            border: 4px solid #2d2d2d;
+            background: white;
+            overflow: hidden;
+            box-shadow: 4px 4px 0 rgba(45, 45, 45, 0.3);
+        }
+
+        .interactive-video-container .video-pair {
+            display: flex;
+            flex: 1;
+            /* min-height: 400px; */
+        }
+
+        .interactive-video-container .video-wrapper {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .interactive-video-container .video-wrapper:first-child {
+            border-right: 2px solid #2d2d2d;
+        }
+
+        .interactive-video-container .video-wrapper:last-child {
+            border-left: 2px solid #2d2d2d;
+        }
+
+        .interactive-video-container .video-player-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Placeholder Screen */
+        .placeholder-screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .placeholder-screen.active {
+            display: flex;
+        }
+
+        .placeholder-screen .prompt-text {
+            animation: pulse 2s ease-in-out infinite;
+            z-index: 20;
+            font-family: 'Press Start 2P', cursive;
+            color: #fff;
+            text-align: center;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+        }
+
+        .placeholder-screen img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .placeholder-screen img.background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.7;
+                transform: scale(1.05);
+            }
+        }
+
+        /* Hide videos by default */
+        .interactive-video-container .reference-video,
+        .interactive-video-container .main-video {
+            display: none;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .interactive-video-container .reference-video.active,
+        .interactive-video-container .main-video.active {
+            display: block;
+        }
+
+        /* Gameboy Controls */
+        .gameboy-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: #e8e3d7;
+            border-top: 4px solid #2d2d2d;
+            position: relative;
+        }
+
+        .gameboy-controls::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            bottom: 8px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            pointer-events: none;
+        }
+
+        .gameboy-button {
+            font-family: 'Press Start 2P', cursive;
+            position: relative;
+            min-width: 120px;
+            padding: 1rem 1.5rem;
+            background: linear-gradient(180deg, #ff4757 0%, #c23616 100%);
+            border: 4px solid #2d2d2d;
+            border-radius: 50px;
+            color: white;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.1s ease;
+            box-shadow:
+                0 6px 0 #8b0000,
+                0 8px 8px rgba(0, 0, 0, 0.3),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3);
+            text-shadow: 0 2px 0 rgba(0, 0, 0, 0.5);
+        }
+
+        .gameboy-button:hover {
+            background: linear-gradient(180deg, #ff6b81 0%, #d63447 100%);
+            transform: translateY(1px);
+            box-shadow:
+                0 5px 0 #8b0000,
+                0 6px 6px rgba(0, 0, 0, 0.3),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .gameboy-button:active,
+        .gameboy-button.active {
+            background: linear-gradient(180deg, #c23616 0%, #7f1d0f 100%);
+            transform: translateY(4px);
+            box-shadow:
+                0 2px 0 #8b0000,
+                0 3px 3px rgba(0, 0, 0, 0.3),
+                inset 0 -2px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .gameboy-button .button-label {
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Alternative button colors for variety */
+        .gameboy-button:nth-child(2) {
+            background: linear-gradient(180deg, #5352ed 0%, #3742fa 100%);
+            box-shadow:
+                0 6px 0 #1e3799,
+                0 8px 8px rgba(0, 0, 0, 0.3),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .gameboy-button:nth-child(2):hover {
+            background: linear-gradient(180deg, #747de8 0%, #4b56fa 100%);
+            box-shadow:
+                0 5px 0 #1e3799,
+                0 6px 6px rgba(0, 0, 0, 0.3),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .gameboy-button:nth-child(2):active,
+        .gameboy-button:nth-child(2).active {
+            background: linear-gradient(180deg, #3742fa 0%, #1e3799 100%);
+            box-shadow:
+                0 2px 0 #1e3799,
+                0 3px 3px rgba(0, 0, 0, 0.3),
+                inset 0 -2px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .gameboy-button:nth-child(3) {
+            background: linear-gradient(180deg, #ffa502 0%, #ff7f50 100%);
+            box-shadow:
+                0 6px 0 #cc6600,
+                0 8px 8px rgba(0, 0, 0, 0.3),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .gameboy-button:nth-child(3):hover {
+            background: linear-gradient(180deg, #ffb733 0%, #ff9065 100%);
+            box-shadow:
+                0 5px 0 #cc6600,
+                0 6px 6px rgba(0, 0, 0, 0.3),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .gameboy-button:nth-child(3):active,
+        .gameboy-button:nth-child(3).active {
+            background: linear-gradient(180deg, #ff7f50 0%, #cc6600 100%);
+            box-shadow:
+                0 2px 0 #cc6600,
+                0 3px 3px rgba(0, 0, 0, 0.3),
+                inset 0 -2px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive gameboy controls */
+        @media screen and (max-width: 768px) {
+            .gameboy-controls {
+                flex-direction: column;
+                gap: 0.75rem;
+                padding: 1.5rem;
+            }
+
+            .gameboy-button {
+                min-width: 100%;
+                font-size: 0.6rem;
+                padding: 0.8rem 1.2rem;
+            }
+
+            .placeholder-screen {
+                font-size: 0.8rem;
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+                <a class="navbar-item" href="#">
+                    <span class="icon">
+                        <i class="fas fa-home"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </nav> -->
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-1 publication-title">The World is Your Canvas</h1>
+                        <h2 class="title is-4 publication-title">Painting Promptable Events with Reference Images,
+                            Trajectories, and Text</h2>
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">Anonymous Authors</span>
+                        </div>
+
+                        <!-- <div class="column has-text-centered">
+                        <div class="publication-links">
+                            <span class="link-block">
+                                <a href="#" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="ai ai-arxiv"></i>
+                                    </span>
+                                    <span>Paper</span>
+                                </a>
+                            </span>
+                            <span class="link-block">
+                                <a href="#" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="fab fa-github"></i>
+                                    </span>
+                                    <span>Code</span>
+                                </a>
+                            </span>
+                            <span class="link-block">
+                                <a href="#" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        🤗
+                                    </span>
+                                    <span>HF Demo</span>
+                                </a>
+                            </span>
+                        </div>
+                    </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teaser video placeholder -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column">
+                    <div>
+                        <video class="main-video" autoplay muted controls autoplay muted loop>
+                            <source src="WorldCanvas.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Abstract -->
+    <section class="section hero is-light">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p style="font-size: 1.2em;">
+                            We present WorldCanvas, a framework for promptable world events that enables rich,
+                            user-directed simulation by combining text, trajectories, and reference images. Unlike
+                            text-only approaches and existing trajectory-controlled image-to-video methods, our
+                            multimodal approach combines trajectories—encoding motion, timing, and visibility—with
+                            natural language for semantic intent and reference images for visual grounding of object
+                            identity, enabling the generation of coherent, controllable events that include multi-agent
+                            interactions, object entry/exit, reference-guided appearance and counterintuitive events.
+                            The resulting videos demonstrate not only temporal coherence but also emergent consistency,
+                            preserving object identity and scene despite temporary disappearance. By supporting
+                            expressive world events generation, WorldCanvas advances world models from passive
+                            predictors to interactive, user-shaped simulators.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlight Demos -->
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container">
+                <h2 class="title is-2 has-text-centered">Event Branches</h2>
+
+                <div class="columns is-multiline is-centered">
+
+
+                    <div class="column is-four-fifths gallery-item">
+                        <div class="interactive-video-container" data-video-set="dog-set">
+                            <div class="video-pair">
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <div class="placeholder-screen active">
+                                            <div class="prompt-text">What event should happen next?</div>
+                                        </div>
+                                        <video class="reference-video" data-option="dog" muted loop>
+                                            <source src="cases_new/teaser/_dog/output_video_first.mp4" type="video/mp4">
+                                        </video>
+                                        <video class="reference-video" data-option="dog-spin" muted loop>
+                                            <source src="cases_new/teaser/_dog_spin/output_video_first.mp4"
+                                                type="video/mp4">
+                                        </video>
+                                        <video class="reference-video" data-option="jerry-dog" muted loop>
+                                            <source src="cases_new/teaser/_jerry_dog/output_video_first.mp4"
+                                                type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <div class="placeholder-screen active">
+                                            <img src="pics/dog.png" />
+                                        </div>
+
+                                        <video class="main-video" data-option="dog" muted loop>
+                                            <source src="cases_new/teaser/_dog/output_video.mp4" type="video/mp4">
+                                        </video>
+                                        <video class="main-video" data-option="dog-spin" muted loop>
+                                            <source src="cases_new/teaser/_dog_spin/output_video.mp4" type="video/mp4">
+                                        </video>
+                                        <video class="main-video" data-option="jerry-dog" muted loop>
+                                            <source src="cases_new/teaser/_jerry_dog/output_video.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gameboy-controls">
+                                <button class="gameboy-button" data-option="dog">
+                                    <span class="button-label">Event 1</span>
+                                </button>
+                                <button class="gameboy-button" data-option="dog-spin">
+                                    <span class="button-label">Event 2</span>
+                                </button>
+                                <button class="gameboy-button" data-option="jerry-dog">
+                                    <span class="button-label">Event 3</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-four-fifths gallery-item">
+                        <div class="interactive-video-container" data-video-set="dog-set">
+                            <div class="video-pair">
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <div class="placeholder-screen active">
+                                            <div class="prompt-text">What event should happen next?</div>
+                                        </div>
+                                        <video class="reference-video" data-option="run" muted loop>
+                                            <source src="cases_new/teaser/_run/output_video_first.mp4" type="video/mp4">
+                                        </video>
+                                        <video class="reference-video" data-option="run-dragon" muted loop>
+                                            <source src="cases_new/teaser/_run_dragon4/output_video_first.mp4"
+                                                type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <div class="placeholder-screen active">
+                                            <img src="pics/run.png" />
+                                        </div>
+
+                                        <video class="main-video" data-option="run" muted loop>
+                                            <source src="cases_new/teaser/_run/output_video.mp4" type="video/mp4">
+                                        </video>
+                                        <video class="main-video" data-option="run-dragon" muted loop>
+                                            <source src="cases_new/teaser/_run_dragon4/output_video.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gameboy-controls">
+                                <button class="gameboy-button" data-option="run">
+                                    <span class="button-label">Event 1</span>
+                                </button>
+                                <button class="gameboy-button" data-option="run-dragon">
+                                    <span class="button-label">Event 2</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="hero is-small is-light">
+        <div class="hero-body">
+            <div class="container">
+                <h2 class="title is-2 has-text-centered">Results Gallery</h2>
+                <h3 class="title is-3 category-title">Subject & Camera motion</h3>
+                    <div class="columns is-multiline is-centered">
+                        <div class="column is-half gallery-item">
+                            <div class="video-container-overlay">
+                                <div class="video-pair">
+                                    <div class="video-wrapper">
+                                        <div class="video-player-container">
+                                            <video class="reference-video" autoplay muted loop>
+                                                <source src="cases_new/object_movements/_piaoyi/output_video_first.mp4"
+                                                    type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <div class="video-wrapper">
+                                        <div class="video-player-container">
+                                            <video class="main-video" autoplay muted loop>
+                                                <source src="cases_new/object_movements/_piaoyi/output_video.mp4"
+                                                    type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="video-caption">
+                                    <div class="caption-content"><span class="blue-text">The car performs a drift at the intersection, aligning its front end in the correct direction, then drives off in that direction and exits the frame.</span></div>
+                                    <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-half gallery-item">
+                            <div class="video-container-overlay">
+                                <div class="video-pair">
+                                    <div class="video-wrapper">
+                                        <div class="video-player-container">
+                                            <video class="reference-video" autoplay muted loop>
+                                                <source src="cases_new/object_movements/_camera/output_video_first.mp4"
+                                                    type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <div class="video-wrapper">
+                                        <div class="video-player-container">
+                                            <video class="main-video" autoplay muted loop>
+                                                <source src="cases_new/object_movements/_camera/output_video.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="video-caption">
+                                    <div class="caption-content"><span class="blue-text">The girl is spinning while taking a selfie, continuously moving her head and smiling. The background behind her keeps rotating.</span></div>
+                                    <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-half gallery-item">
+                            <div class="video-container-overlay">
+                                <div class="video-pair">
+                                    <div class="video-wrapper">
+                                        <div class="video-player-container">
+                                            <video class="reference-video" autoplay muted loop>
+                                                <source src="cases_new/object_movements/pedestrain_sudu/output_video_first.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <div class="video-wrapper">
+                                        <div class="video-player-container">
+                                            <video class="main-video" autoplay muted loop>
+                                                <source src="cases_new/object_movements/pedestrain_sudu/output_video.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="video-caption">
+                                    <div class="caption-content"><span class="blue-text">A man walks on the road, first slowly and then run faster (Tip: Use trajectory to control motion speed).</span></div>
+                                    <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-half gallery-item">
+                            <div class="video-container-overlay">
+                                <div class="video-pair">
+                                    <div class="video-wrapper">
+                                        <div class="video-player-container">
+                                            <video class="reference-video" autoplay muted loop>
+                                                <source src="cases_new/object_movements/ballon/output_video_first.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <div class="video-wrapper">
+                                        <div class="video-player-container">
+                                            <video class="main-video" autoplay muted loop>
+                                                <source src="cases_new/object_movements/ballon/output_video.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="video-caption">
+                                    <div class="caption-content"><span class="blue-text">The hot air balloon in the left flies through the other two balloons (Tip: Use trajectory to control occlusion).</span></div>
+                                    <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <h3 class="title is-3 category-title">Interactive Actions</h3>
+                    <div class="columns is-multiline is-centered">
+                        <div class="column is-half gallery-item">
+                            <div class="video-container-overlay">
+                                <div class="video-pair">
+                                    <div class="video-wrapper">
+                                        <div class="video-player-container">
+                                            <video class="reference-video" autoplay muted loop>
+                                                <source src="cases_new/Interactions/_dance/output_video_first.mp4"
+                                                    type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <div class="video-wrapper">
+                                        <div class="video-player-container">
+                                            <video class="main-video" autoplay muted loop>
+                                                <source src="cases_new/Interactions/_dance/output_video.mp4"
+                                                    type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="video-caption">
+                                    <div class="caption-content"><span class="blue-text">The woman moves closer to the man, who then lifts her up and spins her halfway around before putting her down.</span><span class="green-text"> The man embraces the woman as she walks toward him, lifts her up, and spins her halfway around in place before putting her down.</span></div>
+                                    <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-half gallery-item">
+                            <div class="video-container-overlay">
+                                <div class="video-pair">
+                                    <div class="video-wrapper">
+                                        <div class="video-player-container">
+                                            <video class="reference-video" autoplay muted loop>
+                                                <source src="cases_new/Interactions/_girl_spin_lift_dog/output_video_first.mp4"
+                                                    type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <div class="video-wrapper">
+                                        <div class="video-player-container">
+                                            <video class="main-video" autoplay muted loop>
+                                                <source src="cases_new/Interactions/_girl_spin_lift_dog/output_video.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="video-caption">
+                                    <div class="caption-content"><span class="blue-text">The little girl spins around once in place, then walks toward the puppy approaching her, picks it up, and lifts it above her head.</span><span class="green-text"> A cute little dog enters the frame, runs toward the little girl, and is then picked up by her and lifted above her head.</span></div>
+                                    <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-half gallery-item">
+                            <div class="video-container-overlay">
+                                <div class="video-pair">
+                                    <div class="video-wrapper">
+                                        <div class="video-player-container">
+                                            <video class="reference-video" autoplay muted loop>
+                                                <source src="cases_new/Interactions/_table/output_video_first.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <div class="video-wrapper">
+                                        <div class="video-player-container">
+                                            <video class="main-video" autoplay muted loop>
+                                                <source src="cases_new/Interactions/_table/output_video.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="video-caption">
+                                    <div class="caption-content"><span class="blue-text">A hand moves toward the cup, grasps it, lifts it into the air, releases it, and then moves the hand away. </span><span class="green-text">The cup is lifted into the air by a hand; after the hand lets go, the cup falls, topples over upon hitting the table, and water spills out from inside.</span></div>
+                                    <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-half gallery-item">
+                            <div class="video-container-overlay">
+                                <div class="video-pair">
+                                    <div class="video-wrapper">
+                                        <div class="video-player-container">
+                                            <video class="reference-video" autoplay muted loop>
+                                                <source src="cases_new/Interactions/_war/output_video_first.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <div class="video-wrapper">
+                                        <div class="video-player-container">
+                                            <video class="main-video" autoplay muted loop>
+                                                <source src="cases_new/Interactions/_war/output_video.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="video-caption">
+                                    <div class="caption-content"><span class="blue-text">A man rides a motorcycle forward at high speed, with the background continuously moving backward. Suddenly, he leans sharply to the left to dodge an incoming missile, then straightens his body again and continues riding forward. <span class="green-text">The motorcycle speeds forward, and suddenly the rider leans it sharply to the left to dodge an incoming missile, then straightens it back to an upright position. </span><span class="purple-text">A missile flies toward the man, whizzes past his head, lands behind him, and explodes.</span></div>
+                                    <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <h3 class="title is-3 category-title">Subject appearance & disappearance</h3>
+                    <div class="columns is-multiline is-centered">
+                        <div class="column is-half gallery-item">
+                            <div class="video-container-overlay">
+                                <div class="video-pair">
+                                    <div class="video-wrapper">
+                                        <div class="video-player-container">
+                                            <video class="reference-video" autoplay muted loop>
+                                                <source src="cases_new/Object_appearance/ufo/output_video_first.mp4"
+                                                    type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <div class="video-wrapper">
+                                        <div class="video-player-container">
+                                            <video class="main-video" autoplay muted loop>
+                                                <source src="cases_new/Object_appearance/ufo/output_video.mp4"
+                                                    type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="video-caption">
+                                    <div class="caption-content"><span class="blue-text">A UFO slowly emerges in the sky.</span><span class="green-text"> A mysterious man wearing a cloak and a conical hat appears out of nowhere and walks toward the UFO.</span><span class="red-text"> An alien flies out of the UFO and slowly descends to the ground.</span></div>
+                                    <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-half gallery-item">
+                            <div class="video-container-overlay">
+                                <div class="video-pair">
+                                    <div class="video-wrapper">
+                                        <div class="video-player-container">
+                                            <video class="reference-video" autoplay muted loop>
+                                                <source src="cases_new/Object_appearance/_sudu_ours/output_video_first.mp4"
+                                                    type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <div class="video-wrapper">
+                                        <div class="video-player-container">
+                                            <video class="main-video" autoplay muted loop>
+                                                <source src="cases_new/Object_appearance/_sudu_ours/output_video.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="video-caption">
+                                    <div class="caption-content"><span class="blue-text">A car drives into the frame and then slams on the brakes to avoid hitting a person.</span><span class="green-text"> An elderly man walks into the frame and begins moving forward. Suddenly, he notices a car approaching in the distance and starts stepping backward to avoid being hit. He eventually walked out of the frame and disappeared.</span></div>
+                                    <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-half gallery-item">
+                            <div class="video-container-overlay">
+                                <div class="video-pair">
+                                    <div class="video-wrapper">
+                                        <div class="video-player-container">
+                                            <video class="reference-video" autoplay muted loop>
+                                                <source src="cases_new/Object_appearance/thief/output_video_first.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <div class="video-wrapper">
+                                        <div class="video-player-container">
+                                            <video class="main-video" autoplay muted loop>
+                                                <source src="cases_new/Object_appearance/thief/output_video.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="video-caption">
+                                    <div class="caption-content"><span class="blue-text">The thief fled hastily, running out of the frame. </span><span class="green-text">A police officer enters the frame, chasing the fleeing thief.</span></div>
+                                    <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-half gallery-item">
+                            <div class="video-container-overlay">
+                                <div class="video-pair">
+                                    <div class="video-wrapper">
+                                        <div class="video-player-container">
+                                            <video class="reference-video" autoplay muted loop>
+                                                <source src="cases_new/Object_appearance/ghost/output_video_first.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <div class="video-wrapper">
+                                        <div class="video-player-container">
+                                            <video class="main-video" autoplay muted loop>
+                                                <source src="cases_new/Object_appearance/ghost/output_video.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="video-caption">
+                                    <div class="caption-content"><span class="blue-text">The ghost floats toward the window and then vanishes.</span></div>
+                                    <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="title is-3 category-title">Reference-Image based generation</h3>
+                    <div class="columns is-multiline is-centered">
+                        <div class="column is-four-fifths gallery-item">
+                            <div class="reference-image-item">
+                                <div class="reference-image-list" style="width: 40%;">
+                                    <div class="reference-image">
+                                        <img src="pics/ref_man_bear.png" />
+                                    </div>
+                                </div>
+                                <div class="video-container-overlay">
+                                    <div class="video-pair">
+                                        <div class="video-wrapper">
+                                            <div class="video-player-container">
+                                                <video class="reference-video" autoplay muted loop>
+                                                    <source src="cases_new/ref/bear/output_video_first.mp4" type="video/mp4">
+                                                </video>
+                                            </div>
+                                        </div>
+                                        <div class="video-wrapper">
+                                            <div class="video-player-container">
+                                                <video class="main-video" autoplay muted loop>
+                                                    <source src="cases_new/ref/bear/output_video.mp4" type="video/mp4">
+                                                </video>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="video-caption">
+                                        <div class="caption-content"><span class="blue-text">The man walks forward to the polar bear, then rides on it and continues moving forward. <span class="green-text">The polar bear stands still in place, waiting for the man to come to it, mount it, and then carries the man forward. </span><span class="cyan-text">A Chinese dragon flies across the sky, its scales golden yellow.</span></div>
+                                        <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-four-fifths gallery-item">
+                            <div class="reference-image-item">
+                                <div class="reference-image-list" style="width: 40%;">
+                                    <div class="reference-image">
+                                        <img src="pics/ref_eagle.png" />
+                                    </div>
+                                </div>
+                                <div class="video-container-overlay">
+                                    <div class="video-pair">
+                                        <div class="video-wrapper">
+                                            <div class="video-player-container">
+                                                <video class="reference-video" autoplay muted loop>
+                                                    <source src="cases_new/ref/eagle/output_video_first.mp4" type="video/mp4">
+                                                </video>
+                                            </div>
+                                        </div>
+                                        <div class="video-wrapper">
+                                            <div class="video-player-container">
+                                                <video class="main-video" autoplay muted loop>
+                                                    <source src="cases_new/ref/eagle/output_video.mp4" type="video/mp4">
+                                                </video>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="video-caption">
+                                        <div class="caption-content"><span class="blue-text">The man wearing sunglasses turns around on the spot, gazes at the eagle flying across the sky, and removes his hat in salute. </span><span class="green-text">An eagle soars through the sky.</span></div>
+                                        <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-four-fifths gallery-item">
+                            <div class="reference-image-item">
+                                <div class="reference-image-list" style="width: 40%;">
+                                    <div class="reference-image">
+                                        <img src="pics/ref_dog.png" />
+                                    </div>
+                                </div>
+                                <div class="video-container-overlay">
+                                    <div class="video-pair">
+                                        <div class="video-wrapper">
+                                            <div class="video-player-container">
+                                                <video class="reference-video" autoplay muted loop>
+                                                    <source src="cases_new/ref/dog/output_video_first.mp4" type="video/mp4">
+                                                </video>
+                                            </div>
+                                        </div>
+                                        <div class="video-wrapper">
+                                            <div class="video-player-container">
+                                                <video class="main-video" autoplay muted loop>
+                                                    <source src="cases_new/ref/dog/output_video.mp4" type="video/mp4">
+                                                </video>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="video-caption">
+                                        <div class="caption-content"><span class="blue-text">The dog leaped vigorously, lunging at the butterfly in midair, but missed and landed on the ground. </span><span class="green-text">The butterfly fluttered in the air, dodged the dog's lunge, and then flew upward.</span></div>
+                                        <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-four-fifths gallery-item">
+                            <div class="reference-image-item">
+                                <div class="reference-image-list" style="width: 20%;">
+                                    <div class="reference-image">
+                                        <img src="pics/ref_man1.png" />
+                                    </div>
+                                </div>
+                                <div class="video-container-overlay">
+                                    <div class="video-pair">
+                                        <div class="video-wrapper">
+                                            <div class="video-player-container">
+                                                <video class="reference-video" autoplay muted loop>
+                                                    <source src="cases_new/ref/sheep/output_video_first.mp4" type="video/mp4">
+                                                </video>
+                                            </div>
+                                        </div>
+                                        <div class="video-wrapper">
+                                            <div class="video-player-container">
+                                                <video class="main-video" autoplay muted loop>
+                                                    <source src="cases_new/ref/sheep/output_video.mp4" type="video/mp4">
+                                                </video>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="video-caption">
+                                        <div class="caption-content"><span class="blue-text">The man wearing sunglasses walks forward, takes off his hat, and places it on the sheep's head. </span><span class="green-text">A white sheep walks into the frame.</span></div>
+                                        <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-four-fifths gallery-item">
+                            <div class="reference-image-item">
+                                <div class="reference-image-list" style="width: 20%;">
+                                    <div class="reference-image">
+                                        <img src="pics/ref_man2.png" />
+                                    </div>
+                                </div>
+                                <div class="video-container-overlay">
+                                    <div class="video-pair">
+                                        <div class="video-wrapper">
+                                            <div class="video-player-container">
+                                                <video class="reference-video" autoplay muted loop>
+                                                    <source src="cases_new/ref/tower/output_video_first.mp4" type="video/mp4">
+                                                </video>
+                                            </div>
+                                        </div>
+                                        <div class="video-wrapper">
+                                            <div class="video-player-container">
+                                                <video class="main-video" autoplay muted loop>
+                                                    <source src="cases_new/ref/tower/output_video.mp4" type="video/mp4">
+                                                </video>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="video-caption">
+                                        <div class="caption-content"><span class="blue-text">The man wearing sunglasses turned toward the tower and punched it down with a single blow. </span><span class="green-text">The tower remained still at first, then, after being punched by the man, it tilted and collapsed, raising a cloud of dust.</span></div>
+                                        <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+
+                <h3 class="title is-3 category-title">Text-Trajectory correspondence</h3>
+                <div class="columns is-multiline is-centered">
+                    <div class="column is-half gallery-item">
+                        <div class="video-container-overlay">
+                            <div class="video-pair">
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="reference-video" autoplay muted loop>
+                                            <source src="cases_new/corr/_caochang1/output_video_first_caochang1.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="main-video" autoplay muted loop>
+                                            <source src="cases_new/corr/_caochang1/output_video.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-caption">
+                                <div class="caption-content"><span class="red-text">A cat walks into the frame and moves toward the goal. </span><span class="cyan-text">A dog walks into the frame and moves toward the goal.</span></div>
+                                <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-half gallery-item">
+                        <div class="video-container-overlay">
+                            <div class="video-pair">
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="reference-video" autoplay muted loop>
+                                            <source src="cases_new/corr/_caochang2/output_video_first_caochang2.mp4"
+                                                type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="main-video" autoplay muted loop>
+                                            <source src="cases_new/corr/_caochang2/output_video.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-caption">
+                                <div class="caption-content"><span class="red-text">A dog walks into the frame and moves toward the goal. </span><span class="cyan-text">A cat walks into the frame and approaches the goal.</span></div>
+                                <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-half gallery-item">
+                        <div class="video-container-overlay">
+                            <div class="video-pair">
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="reference-video" autoplay muted loop>
+                                            <source src="cases_new/corr/_beach1/output_video_first.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="main-video" autoplay muted loop>
+                                            <source src="cases_new/corr/_beach1/output_video.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-caption">
+                                <div class="caption-content"><span class="blue-text">The woman on the left moves to the left while raising both hands above her head. </span><span class="green-text">The woman on the right moves to the right while placing both hands on her back behind her. </span><span class="red-text">The woman in the middle slowly squats down in place.</span></div>
+                                <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-half gallery-item">
+                        <div class="video-container-overlay">
+                            <div class="video-pair">
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="reference-video" autoplay muted loop>
+                                            <source src="cases_new/corr/_beach2/output_video_first.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="main-video" autoplay muted loop>
+                                            <source src="cases_new/corr/_beach2/output_video.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-caption">
+                                <div class="caption-content"><span class="blue-text">The woman on the left moves to the left while placing both hands on her back behind her.</span><span class="green-text">The woman on the right moves to the right while raising both hands above her head.</span><span class="red-text">The woman in the middle slowly squats down in place.</span></div>
+                                <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="column is-half gallery-item">
+                        <div class="video-container-overlay">
+                            <div class="video-pair">
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="reference-video" autoplay muted loop>
+                                            <source src="cases_new/corr/_children1/output_video_first.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="main-video" autoplay muted loop>
+                                            <source src="cases_new/corr/_children1/output_video.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-caption">
+                                <div class="caption-content"><span class="blue-text">The little girl in front walks forward, raising her hands above her head. </span><span class="green-text">The little girl behind walks forward, squats down, then starts crying and wipes her tears with both hands. </span></div>
+                                <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-half gallery-item">
+                        <div class="video-container-overlay">
+                            <div class="video-pair">
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="reference-video" autoplay muted loop>
+                                            <source src="cases_new/corr/_children2/output_video_first.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="main-video" autoplay muted loop>
+                                            <source src="cases_new/corr/_children2/output_video.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-caption">
+                                <div class="caption-content"><span class="blue-text">The little girl in front walks forward, starts crying, and wipes her tears with both hands. </span><span class="green-text">The little girl behind walks forward and squats down, raising her hands above her head.</span></div>
+                                <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-half gallery-item">
+                        <div class="video-container-overlay">
+                            <div class="video-pair">
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="reference-video" autoplay muted loop>
+                                            <source src="cases_new/corr/_sky1/output_video_first.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="main-video" autoplay muted loop>
+                                            <source src="cases_new/corr/_sky1/output_video.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-caption">
+                                <div class="caption-content"><span class="blue-text">A fighter jet flies by, leaving a white contrail behind. </span><span class="green-text">A UFO flies by, flashing with colorful lights. </span></div>
+                                <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-half gallery-item">
+                        <div class="video-container-overlay">
+                            <div class="video-pair">
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="reference-video" autoplay muted loop>
+                                            <source src="cases_new/corr/_sky2/output_video_first.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="main-video" autoplay muted loop>
+                                            <source src="cases_new/corr/_sky2/output_video.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-caption">
+                                <div class="caption-content"><span class="green-text">A fighter jet flies by, leaving a white contrail behind. </span><span class="blue-text">A UFO flies by, flashing with colorful lights.</span></div>
+                                <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <h3 class="title is-3 category-title">Visual Memory</h3>
+                <div class="columns is-multiline is-centered">
+                    <div class="column is-half gallery-item">
+                        <div class="video-container-overlay">
+                            <div class="video-pair">
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="reference-video" autoplay muted loop>
+                                            <source src="cases_new/memory/_ball/output_video_first.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="main-video" autoplay muted loop>
+                                            <source src="cases_new/memory/_ball/output_video.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-caption">
+                                <div class="caption-content"><span class="blue-text">A patterned ball falls, disappears from the frame, then bounces off the ground and reappears in the shot. </span><span class="green-text">The cameraperson's hand pulls back and disappears from the frame.</span></div>
+                                <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-half gallery-item">
+                        <div class="video-container-overlay">
+                            <div class="video-pair">
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="reference-video" autoplay muted loop>
+                                            <source src="cases_new/memory/_camera_scene/output_video_first.mp4"
+                                                type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="main-video" autoplay muted loop>
+                                            <source src="cases_new/memory/_camera_scene/output_video.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-caption">
+                                <div class="caption-content"><span class="blue-text">The girl is spinning while taking a selfie, continuously moving her head and smiling. The background behind her keeps rotating.</span></div>
+                                <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-half gallery-item">
+                        <div class="video-container-overlay">
+                            <div class="video-pair">
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="reference-video" autoplay muted loop>
+                                            <source src="cases_new/memory/_shubao/output_video_first.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="main-video" autoplay muted loop>
+                                            <source src="cases_new/memory/_shubao/output_video.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-caption">
+                                <div class="caption-content"><span class="blue-text">The little boy walks out of the frame, then walks back into the shot, approaches his backpack on the ground, and picks it up. </span><span class="green-text">The backpack lies still on the ground, then is picked up by the little boy as he walks back.</span></div>
+                                <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="title is-3 category-title">Physical plausibility & Causal reasoning & Prediction</h3>
+                <div class="columns is-multiline is-centered">
+                    <div class="column is-half gallery-item">
+                        <div class="video-container-overlay">
+                            <div class="video-pair">
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="reference-video" autoplay muted loop>
+                                            <source src="cases_new/causual/duominuo/output_video_first.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="main-video" autoplay muted loop>
+                                            <source src="cases_new/causual/duominuo/output_video.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-caption">
+                                <div class="caption-content"><span class="blue-text">This domino falls and lands on the table.</span></div>
+                                <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-half gallery-item">
+                        <div class="video-container-overlay">
+                            <div class="video-pair">
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="reference-video" autoplay muted loop>
+                                            <source src="cases_new/causual/fire/output_video_first.mp4"
+                                                type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="main-video" autoplay muted loop>
+                                            <source src="cases_new/causual/fire/output_video.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-caption">
+                                <div class="caption-content"><span class="blue-text">The burning torch approaches the paper and makes contact with it.</span></div>
+                                <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-half gallery-item">
+                        <div class="video-container-overlay">
+                            <div class="video-pair">
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="reference-video" autoplay muted loop>
+                                            <source src="cases_new/causual/water/output_video_first.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="main-video" autoplay muted loop>
+                                            <source src="cases_new/causual/water/output_video.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-caption">
+                                <div class="caption-content"><span class="blue-text">The bottle of drink falls over onto the tabletop.</span></div>
+                                <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-half gallery-item">
+                        <div class="video-container-overlay">
+                            <div class="video-pair">
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="reference-video" autoplay muted loop>
+                                            <source src="cases_new/causual/book/output_video_first.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="main-video" autoplay muted loop>
+                                            <source src="cases_new/causual/book/output_video.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-caption">
+                                <div class="caption-content"><span class="blue-text">A book on the table is suddenly pulled away by a hand.</span></div>
+                                <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="title is-3 category-title">Counterfactual generation</h3>
+                <div class="columns is-multiline is-centered">
+                    <div class="column is-half gallery-item">
+                        <div class="video-container-overlay">
+                            <div class="video-pair">
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="reference-video" autoplay muted loop>
+                                            <source src="cases_new/counterfactual/shark/output_video_first.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="main-video" autoplay muted loop>
+                                            <source src="cases_new/counterfactual/shark/output_video.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-caption">
+                                <div class="caption-content"><span class="blue-text">A shark enters the frame, leaps into the air, then dives into the sand and disappears—only to burst back out of the sand and leap into the air again.</span></div>
+                                <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-half gallery-item">
+                        <div class="video-container-overlay">
+                            <div class="video-pair">
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="reference-video" autoplay muted loop>
+                                            <source src="cases_new/counterfactual/dog/output_video_first.mp4"
+                                                type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="main-video" autoplay muted loop>
+                                            <source src="cases_new/counterfactual/dog/output_video.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-caption">
+                                <div class="caption-content"><span class="blue-text">As the puppy was walking, it suddenly grew a pair of wings and flew up into the sky.</span></div>
+                                <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="title is-3 category-title">Failure cases</h3>
+                <div class="columns is-multiline is-centered">
+                    <div class="column is-half gallery-item">
+                        <div class="video-container-overlay">
+                            <div class="video-pair">
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="reference-video" autoplay muted loop>
+                                            <source src="cases_new/failure/360/output_video_first.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="main-video" autoplay muted loop>
+                                            <source src="cases_new/failure/360/output_video.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-caption">
+                                <div class="caption-content"><span class="blue-text">The girl spins around while taking a selfie, continuously shaking her head and smiling. The background behind her also rotates continuously. After completing a full turn, the background returns to its original position as at the beginning.</span></div>
+                                <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-half gallery-item">
+                        <div class="video-container-overlay">
+                            <div class="video-pair">
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="reference-video" autoplay muted loop>
+                                            <source src="cases_new/failure/slt/output_video_first.mp4"
+                                                type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="video-wrapper">
+                                    <div class="video-player-container">
+                                        <video class="main-video" autoplay muted loop>
+                                            <source src="cases_new/failure/slt/output_video.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-caption">
+                                <div class="caption-content"><span class="blue-text">The shot initially focuses on a glass of water, then tilts upward to look out the window, and subsequently moves downward again to refocus on the glass of water.</span></div>
+                                <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container">
+                <h2 class="title is-2 has-text-centered">Comparisons</h2>
+                <div class="columns is-multiline is-centered">
+                    <div class="column is-one-third gallery-item">
+                        <div class="video-container-overlay">
+                            <video class="main-video" autoplay muted loop>
+                                <source src="cases_new/Compare/door_new_ATI.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="video-caption">
+                            <div class="caption-content">The camera moves forward and then stops. Then the door is opened from the inside. A man in pajamas walks out through the door, raises his hand to greet the camera, then turns around and switches off the lit light.</div>
+                            <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                        </div>
+                        <p class="has-text-centered" style="margin-top: 0.5rem;">ATI</p>
+                    </div>
+                    <div class="column is-one-third gallery-item">
+                        <div class="video-container-overlay">
+                            <video class="main-video" autoplay muted loop>
+                                <source src="cases_new/Compare/door_new_Wan.mp4" type="video/mp4">
+                            </video>
+
+                        </div>
+                        <div class="video-caption">
+                            <div class="caption-content">The camera moves forward and then stops. Then the door is opened from the inside. A man in pajamas walks out through the door, raises his hand to greet the camera, then turns around and switches off the lit light.</div>
+                            <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                        </div>
+                        <p class="has-text-centered" style="margin-top: 0.5rem;">Wan2.2 I2V</p>
+                    </div>
+                    <div class="column is-one-third gallery-item">
+                        <div class="video-container-overlay">
+                            <video class="reference-video" autoplay muted loop>
+                                <source src="cases_new/Compare/_door_new_ours/output_video.mp4" type="video/mp4">
+                            </video>
+
+                        </div>
+                        <div class="video-caption">
+                            <div class="caption-content"><span class="red-text">The camera moves forward and then stops. Then the door is opened from the inside. </span><span class="cyan-text">A man in pajamas walks out through the door, raises his hand to greet the camera, then turns around and switches off the lit light.</span></div>
+                            <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                        </div>
+                        <p class="has-text-centered" style="margin-top: 0.5rem;">Ours</p>
+                    </div>
+
+                    <div class="column is-one-third gallery-item">
+                        <div class="video-container-overlay">
+                            <video class="main-video" autoplay muted loop>
+                                <source src="cases_new/Compare/sudu_ATI.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="video-caption">
+                            <div class="caption-content">A car drives into the frame and then slams on the brakes to avoid hitting a person. An elderly man walks into the frame and begins moving forward. Suddenly, he notices a car approaching in the distance and starts stepping backward to avoid being hit. He eventually walked out of the frame and disappeared.</div>
+                            <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                        </div>
+                        <p class="has-text-centered" style="margin-block: 0.5rem;">ATI</p>
+                    </div>
+                    <div class="column is-one-third gallery-item">
+                        <div class="video-container-overlay">
+                            <video class="main-video" autoplay muted loop>
+                                <source src="cases_new/Compare/sudu_Wan.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="video-caption">
+                            <div class="caption-content">A car drives into the frame and then slams on the brakes to avoid hitting a person. An elderly man walks into the frame and begins moving forward. Suddenly, he notices a car approaching in the distance and starts stepping backward to avoid being hit. He eventually walked out of the frame and disappeared.</div>
+                            <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                        </div>
+                        <p class="has-text-centered" style="margin-block: 0.5rem;">Wan2.2 I2V</p>
+                    </div>
+                    <div class="column is-one-third gallery-item">
+                        <div class="video-container-overlay">
+                            <video class="reference-video" autoplay muted loop>
+                                <source src="cases_new/Compare/_sudu_ours/output_video.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="video-caption">
+                            <div class="caption-content"><span class="blue-text">A car drives into the frame and then slams on the brakes to avoid hitting a person.</span><span class="green-text"> An elderly man walks into the frame and begins moving forward. Suddenly, he notices a car approaching in the distance and starts stepping backward to avoid being hit. He eventually walked out of the frame and disappeared.</span></div>
+                            <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                        </div>
+                        <p class="has-text-centered" style="margin-block: 0.5rem;">Ours</p>
+                    </div>
+
+                    <div class="column is-one-third gallery-item">
+                        <div class="video-container-overlay">
+                            <video class="main-video" autoplay muted loop>
+                                <source src="cases_new/corr/children2_ATI.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="video-caption">
+                            <div class="caption-content">The little girl in front walks forward, starts crying, and wipes her tears with both hands. The little girl behind walks forward and squats down, raising her hands above her head.</div>
+                            <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                        </div>
+                        <p class="has-text-centered" style="margin-block: 0.5rem;">ATI</p>
+                    </div>
+                    <div class="column is-one-third gallery-item">
+                        <div class="video-container-overlay">
+                            <video class="main-video" autoplay muted loop>
+                                <source src="cases_new/corr/children2_Wan.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="video-caption">
+                            <div class="caption-content">The little girl in front walks forward, starts crying, and wipes her tears with both hands. The little girl behind walks forward and squats down, raising her hands above her head.</div>
+                            <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                        </div>
+                        <p class="has-text-centered" style="margin-block: 0.5rem;">Wan2.2 I2V</p>
+                    </div>
+                    <div class="column is-one-third gallery-item">
+                        <div class="video-container-overlay">
+                            <video class="reference-video" autoplay muted loop>
+                                <source src="cases_new/corr/_children2/output_video.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="video-caption">
+                            <div class="caption-content"><span class="blue-text">The little girl in front walks forward, starts crying, and wipes her tears with both hands. </span><span class="green-text">The little girl behind walks forward and squats down, raising her hands above her head.</span></div>
+                            <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                        </div>
+                        <p class="has-text-centered" style="margin-block: 0.5rem;">Ours</p>
+                    </div>
+
+                    <div class="column is-one-third gallery-item">
+                        <div class="video-container-overlay">
+                            <video class="main-video" autoplay muted loop>
+                                <source src="cases_new/corr/caochang2_ATI.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="video-caption">
+                            <div class="caption-content">A cat walks into the frame and approaches the goal. A dog walks into the frame and moves toward the goal.</div>
+                            <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                        </div>
+                        <p class="has-text-centered" style="margin-block: 0.5rem;">ATI</p>
+                    </div>
+                    <div class="column is-one-third gallery-item">
+                        <div class="video-container-overlay">
+                            <video class="main-video" autoplay muted loop>
+                                <source src="cases_new/corr/caochang2_Wan.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="video-caption">
+                            <div class="caption-content">A cat walks into the frame and approaches the goal. A dog walks into the frame and moves toward the goal.</div>
+                            <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                        </div>
+                        <p class="has-text-centered" style="margin-block: 0.5rem;">Wan2.2 I2V</p>
+                    </div>
+                    <div class="column is-one-third gallery-item">
+                        <div class="video-container-overlay">
+                            <video class="reference-video" autoplay muted loop>
+                                <source src="cases_new/corr/caochang2_INOUT.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="video-caption">
+                            <div class="caption-content">A cat walks into the frame and approaches the goal. A dog walks into the frame and moves toward the goal.</div>
+                            <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                        </div>
+                        <p class="has-text-centered" style="margin-block: 0.5rem;">Frame In-N-Out</p>
+                    </div>
+                    <div class="column is-one-third gallery-item">
+                        <div class="video-container-overlay">
+                            <video class="reference-video" autoplay muted loop>
+                                <source src="cases_new/corr/_caochang2/output_video.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="video-caption">
+                            <div class="caption-content"><span class="cyan-text">A cat walks into the frame and approaches the goal. </span><span class="red-text">A dog walks into the frame and moves toward the goal.</span></div>
+                            <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                        </div>
+                        <p class="has-text-centered" style="margin-block: 0.5rem;">Ours</p>
+                    </div>
+
+                    <div class="column is-one-third gallery-item">
+                        <div class="video-container-overlay">
+                            <video class="main-video" autoplay muted loop>
+                                <source src="cases_new/Compare/blank1_INOUT.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="video-caption">
+                            <div class="caption-content">The man walks forward to the polar bear, then rides on it and continues moving forward. The polar bear stands still in place, waiting for the man to come to it, mount it, and then carries the man forward. A Chinese dragon flies across the sky, its scales golden yellow.</div>
+                            <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                        </div>
+                        <p class="has-text-centered" style="margin-block: 0.5rem;">Frame IN-N-OUT</p>
+                    </div>
+
+                    <div class="column is-one-third gallery-item">
+                        <div class="video-container-overlay">
+                            <video class="reference-video" autoplay muted loop>
+                                <source src="cases_new/Compare/_blank1_ours/output_video.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="video-caption">
+                            <div class="caption-content"><span class="blue-text">The man walks forward to the polar bear, then rides on it and continues moving forward. <span class="green-text">The polar bear stands still in place, waiting for the man to come to it, mount it, and then carries the man forward. </span><span class="cyan-text">A Chinese dragon flies across the sky, its scales golden yellow.</span></div>
+                            <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                        </div>
+                        <p class="has-text-centered" style="margin-block: 0.5rem;">Ours</p>
+                    </div>
+
+                    <div class="column is-one-third gallery-item">
+                        <div class="video-container-overlay">
+                            <video class="main-video" autoplay muted loop>
+                                <source src="cases_new/corr/beach2_noattn.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="video-caption">
+                            <div class="caption-content"><span class="blue-text">The woman on the left moves to the left while placing both hands on her back behind her.</span><span class="green-text">The woman on the right moves to the right while raising both hands above her head.</span><span class="red-text">The woman in the middle slowly squats down in place.</span></div>
+                            <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                        </div>
+                        <p class="has-text-centered" style="margin-block: 0.5rem;">Standard full cross-attention</p>
+                    </div>
+                    <div class="column is-one-third gallery-item">
+                        <div class="video-container-overlay">
+                            <video class="main-video" autoplay muted loop>
+                                <source src="cases_new/corr/beach2_hardattn.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="video-caption">
+                            <div class="caption-content"><span class="blue-text">The woman on the left moves to the left while placing both hands on her back behind her.</span><span class="green-text">The woman on the right moves to the right while raising both hands above her head.</span><span class="red-text">The woman in the middle slowly squats down in place.</span></div>
+                            <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                        </div>
+                        <p class="has-text-centered" style="margin-block: 0.5rem;">Hard cross-attention</p>
+                    </div>
+                    <div class="column is-one-third gallery-item">
+                        <div class="video-container-overlay">
+                            <video class="reference-video" autoplay muted loop>
+                                <source src="cases_new/corr/_beach2/output_video.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="video-caption">
+                            <div class="caption-content"><span class="blue-text">The woman on the left moves to the left while placing both hands on her back behind her.</span><span class="green-text">The woman on the right moves to the right while raising both hands above her head.</span><span class="red-text">The woman in the middle slowly squats down in place.</span></div>
+                            <button class="caption-toggle" onclick="toggleCaption(this)">+</button>
+                        </div>
+                        <p class="has-text-centered" style="margin-block: 0.5rem;">Ours</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="content" style="text-align: center;">
+                        <p>
+                            This project is intended solely for academic research and effect demonstration.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleCaption(button) {
+            const captionContent = button.parentElement.querySelector('.caption-content');
+            const isExpanded = captionContent.classList.contains('expanded');
+
+            if (isExpanded) {
+                captionContent.classList.remove('expanded');
+                button.textContent = '+';
+            } else {
+                captionContent.classList.add('expanded');
+                button.textContent = '-';
+            }
+        }
+
+        // Interactive Video Controller
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize all interactive video containers
+            const containers = document.querySelectorAll('.interactive-video-container');
+
+            containers.forEach(container => {
+                const buttons = container.querySelectorAll('.gameboy-button');
+                const placeholderScreens = container.querySelectorAll('.placeholder-screen');
+                const referenceVideos = container.querySelectorAll('.reference-video');
+                const mainVideos = container.querySelectorAll('.main-video');
+
+                buttons.forEach(button => {
+                    button.addEventListener('click', function () {
+                        const selectedOption = this.getAttribute('data-option');
+
+                        // Remove active class from all buttons in this container
+                        buttons.forEach(btn => btn.classList.remove('active'));
+
+                        // Add active class to clicked button
+                        this.classList.add('active');
+
+                        // Hide placeholder screens
+                        placeholderScreens.forEach(placeholderScreen => {
+                            placeholderScreen.classList.remove('active');
+                        });
+
+                        // Stop and hide all videos
+                        referenceVideos.forEach(video => {
+                            video.pause();
+                            video.currentTime = 0;
+                            video.classList.remove('active');
+                        });
+
+                        mainVideos.forEach(video => {
+                            video.pause();
+                            video.currentTime = 0;
+                            video.classList.remove('active');
+                        });
+
+                        // Show and play selected videos
+                        const selectedReferenceVideo = container.querySelector(`.reference-video[data-option="${selectedOption}"]`);
+                        const selectedMainVideo = container.querySelector(`.main-video[data-option="${selectedOption}"]`);
+
+                        if (selectedReferenceVideo) {
+                            selectedReferenceVideo.classList.add('active');
+                            selectedReferenceVideo.play();
+                        }
+
+                        if (selectedMainVideo) {
+                            selectedMainVideo.classList.add('active');
+                            selectedMainVideo.play();
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>
